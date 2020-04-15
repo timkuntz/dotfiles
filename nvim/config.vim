@@ -14,6 +14,28 @@ set background=dark
 let g:gruvbox_contrast_dark='medium'
 
 " -----------------------------
+" autozimu/LanguageClient-neovim
+" -----------------------------
+" Required for operations modifying multiple buffers like rename.
+" set hidden
+
+" let g:LanguageClient_serverCommands = {
+"     \ 'javascript': ['/Users/tkuntz/.nvm/versions/node/v11.10.0/lib/node_modules/js-langserver/index.js', '--stdio'],
+"     \ 'javascript.jsx': ['/Users/tkuntz/.nvm/versions/node/v11.10.0/lib/node_modules/js-langserver/index.js', '--stdio'],
+"     \ }
+" let g:LanguageClient_serverCommands = {
+"     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+"     \ 'javascript': ['/usr/local/bin/javascript-typescript-langserver'],
+"     \ 'python': ['/usr/local/bin/pyls'],
+"     \ }
+
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" " Or map each action separately
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" -----------------------------
 " vim-airline/vim-airline
 " -----------------------------
 "  show buffers at top when only one tab
@@ -113,3 +135,5 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
 
+" Typescript support
+" let g:deoplete#enable_at_startup = 1

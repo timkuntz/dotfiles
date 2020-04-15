@@ -4,6 +4,9 @@ let mapleader = ","
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
+" Break out of insert mode
+imap jj <Esc>
+
 if has('nvim')
   " Esc to exit terminal mode
   " Ctrl+v, Esc to send Esc in terminal mode
@@ -51,6 +54,8 @@ map † :tabnew<CR>
 " recall history without moving our hands
 " cnoremap <C-p> <Up>
 " cnoremap <C-n> <Down>
+
+:map <silent> <Leader>fo :!open %<CR>
 
 " Redraw
 map <Leader>d :redraw!<cr>
@@ -115,6 +120,9 @@ map <Leader>wwo :set nowrap nolinebreak<cr>
 " Copy/Paste
 map <Leader>yf :let @*=expand("%")<CR>
 map <Leader>yff :let @*=expand("%:p")<CR>
+
+" Yank entire file content
+map <Leader>YY :%y+<CR>
 
 " Editing
 " Ctrl+r replace highlighted text with prompted replacement

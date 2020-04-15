@@ -17,6 +17,10 @@ call minpac#add('posva/vim-vue')
 " linting
 call minpac#add('w0rp/ale')
 
+" language server support
+" call minpac#add('neoclide/coc.nvim')
+" call minpac#add('autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'})
+
 " colorschemes
 call minpac#add('altercation/vim-colors-solarized')
 call minpac#add('morhetz/gruvbox')
@@ -74,6 +78,14 @@ call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
 
 " split and join code; so fun
 call minpac#add('AndrewRadev/splitjoin.vim')
+
+" typescript support
+" call minpac#add('HerringtonDarkholme/yats.vim')
+" call minpac#add('mhartington/nvim-typescript', {'build': './install.sh'})
+" For async completion
+" call minpac#add('Shougo/deoplete.nvim')
+" For Denite features
+" call minpac#add('Shougo/denite.nvim')
 
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
