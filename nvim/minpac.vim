@@ -4,6 +4,9 @@ call minpac#init()
 " minpac update thyself
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 
+" todo.txt
+" call minpac#add('freitass/todo.txt-vim')
+
 " personal help
 call minpac#add('quigkin/vim-remember')
 
@@ -38,6 +41,9 @@ call minpac#add('junegunn/fzf')
 " javascript
 call minpac#add('pangloss/vim-javascript')
 call minpac#add('mxw/vim-jsx')
+
+" golag
+call minpac#add('fatih/vim-go')
 
 " elixir
 call minpac#add('elixir-editors/vim-elixir')

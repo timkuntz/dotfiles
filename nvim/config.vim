@@ -75,6 +75,17 @@ nnoremap <silent> <Leader>fb :call fzf#run(fzf#wrap({
 \ }))<CR>
 
 " -----------------------------
+" fatih/vim-go
+" -----------------------------
+" let g:go_fmt_command = "goimports"    " Run goimports along gofmt on each save
+let g:go_auto_type_info = 1           " Automatically get signature/type info for object under cursor
+"  notes
+"  autocomplete is triggered by Ctrl-X Ctrl-O
+"  or uncomment the following to have it appear on every .
+"  au filetype go inoremap <buffer> . .<C-x><C-o>
+au FileType go setlocal shiftwidth=4 tabstop=4 " expandtab - go fmt uses tabs
+
+" -----------------------------
 " scrooloose/nerdtree
 " -----------------------------
 nmap <Leader>N :NERDTreeToggle<CR>

@@ -8,8 +8,11 @@ DISABLE_LS_COLORS="true"
 # plugins=(git bundler brew gem rbates elixir)
 plugins=(git bundler brew gem)
 
-export PATH="$HOME/bin:$HOME/Downloads/nvim-osx64/bin:~/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:$HOME/go/bin:$HOME/Downloads/nvim-osx64/bin:~/bin:/usr/local/bin:$PATH"
 export EDITOR='nvim'
+
+# export PATH="$HOME/.jenv/bin:$PATH"
+# eval "$(jenv init -)"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,4 +47,10 @@ if [ -d "$HOME/.nvm" ]; then
 fi
 
 alias mux='tmuxinator'
+alias t='todo.sh'
+alias ta='todo.sh add'
+alias tl='todo.sh list'
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/tkuntz/.sdkman"
+[[ -s "/Users/tkuntz/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/tkuntz/.sdkman/bin/sdkman-init.sh"

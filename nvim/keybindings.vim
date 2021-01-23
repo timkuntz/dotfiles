@@ -100,10 +100,10 @@ map <Leader>ww :set wrap linebreak<cr>
 map <Leader>wwo :set nowrap nolinebreak<cr>
 
 " moving around windows
-" noremap <C-j> <C-W>j
-" noremap <C-k> <C-W>k
-" noremap <C-h> <C-W>h
-" noremap <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 " and resizing windows
 " nmap <c-H> <c-w><
