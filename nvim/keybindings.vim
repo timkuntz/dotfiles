@@ -1,11 +1,19 @@
 " Map Leader: Reset from \ to ,
 let mapleader = ","
 
+" Mark something done
+nnoremap <Leader>x r✓<CR>
+
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
 " Break out of insert mode
 imap jj <Esc>
+
+" Insert date from normal mode
+map <Leader>r :put=system('date +%F')<CR>
+" this should work from insert mode
+" <C-r>=system('date +%F')<CR>
 
 if has('nvim')
   " Esc to exit terminal mode
