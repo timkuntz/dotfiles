@@ -1,9 +1,10 @@
 ZSH=$HOME/.oh-my-zsh
-# ZSH_THEME="random"
-# ZSH_THEME="avit"
-ZSH_THEME="nil"
+ZSH_THEME="robbyrussell"
 DISABLE_AUTO_UPDATE="true"
-DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS="false"
+
+export VIMCONFIG=~/.config/nvim
+export VIMDATA=~/.local/share/nvim
 
 # plugins=(git bundler brew gem rbates elixir)
 plugins=(git bundler brew gem)
@@ -23,8 +24,10 @@ source $ZSH/oh-my-zsh.sh
 # autoload -U compinit
 # compinit
 
-# npx autofall-back
-source <(npx --shell-auto-fallback zsh)
+# Revert back to original Mac OSX colors
+unset LSCOLORS
+export CLICOLOR=1
+export CLICOLOR_FORCE=1
 
 # use Vi for editing
 bindkey -v
@@ -47,10 +50,9 @@ if [ -d "$HOME/.nvm" ]; then
 fi
 
 alias mux='tmuxinator'
-alias t='todo.sh'
-alias ta='todo.sh add'
-alias tl='todo.sh list'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/tkuntz/.sdkman"
 [[ -s "/Users/tkuntz/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/tkuntz/.sdkman/bin/sdkman-init.sh"
+
+eval "$(rbenv init -)"
