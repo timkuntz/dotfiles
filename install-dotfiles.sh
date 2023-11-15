@@ -67,6 +67,16 @@ else
 fi
 }
 
+install_tmux () {
+    if [ -f /usr/bin/nvim ]; then
+        echo "Tmux already installed"
+    else
+        echo "Tmux installing"
+        sudo apt-get update
+        sudo apt-get install tmux -y
+    fi
+}
+
 install_neovim () {
     if [ -f /usr/bin/nvim ]; then
         echo "Neovim already installed"
@@ -81,4 +91,6 @@ install_neovim () {
 }
 
 install_zsh
+install_tmux 
 install_neovim
+
