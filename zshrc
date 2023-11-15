@@ -128,10 +128,9 @@ export PIPER_TEST_REPORT_DOCUMENTATION_OPTION=all
 export SELENIUM_BROWSER_WEBDRIVER="firefox"
 
 # https://starship.rs/guide/#%F0%9F%9A%80-installation
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-. $HOME/.asdf/asdf.sh
-fpath=($ASDF_DIR/completions $fpath)
-autoload -Uz compinit && compinit
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# . $HOME/.asdf/asdf.sh
+# fpath=($ASDF_DIR/completions $fpath)
+# autoload -Uz compinit && compinit

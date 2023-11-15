@@ -6,9 +6,14 @@
 
 ########## Variables
 
+CODESPACES_DIR=/workspaces/.codespaces/.persistedshare/dotfiles
+
 dir=~/dotfiles                    # dotfiles directory
+if [ -d $CODESPACES_DIR ]; then
+    dir=$CODESPACES_DIR
+fi
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="nvim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
+files="zshrc"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -62,15 +67,18 @@ else
 fi
 }
 
+install_neovim () {
+    if [ -f /usr/bin/nvim ]; then
+        echo "Neovim already installed"
+    else
+        echo "Neovim installing"
+        sudo add-apt-repository ppa:neovim-ppa/unstable -y
+        sudo apt-get update
+        sudo apt-get install neovim -y
+    fi
+
+    ln -s $dir/nvim ~/.config/nvim
+}
+
 install_zsh
-
-if [ -f /usr/bin/nvim ]; then
-    echo "Neovim already installed"
-else
-    echo "Neovim installing"
-    sudo add-apt-repository ppa:neovim-ppa/stable
-    sudo apt-get update
-    sudo apt-get install neovim -y
-fi
-
-ln -s nvim ~/.config/nvim
+install_neovim
