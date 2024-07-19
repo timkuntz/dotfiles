@@ -1,0 +1,11 @@
+*# keys become lists
+# nested keys become nested lists
+# non-key items become entries in the list
+- foo:
+  - bar:
+    - bar1
+    - bar2
+  - baz:
+- fu:
+  - some/path
+  - some/other/path
