@@ -48,31 +48,22 @@ return {
       -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/lsp.md#commands
       vim.api.nvim_create_autocmd('LspAttach', {
 	desc = 'LSP actions',
-	callback = function(event)
+	callback = function(_)
 	  local keymap = {
-	    g = {
-	      A = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "LSP Action" },
-	      F = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "LSP Format" },
-	      D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "LSP Declaration" },
-	      K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "LSP Hover" },
-	      R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "LSP Rename" },
-	      d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "LSP Definition" },
-	      i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "LSP Implentation" },
-	      o = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "LSP Type Definition" },
-	      r = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "LSP References" },
-	      s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "LSP Signature Help" },
-	    },
+	    { "gA", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "LSP Action" },
+	    { "gF", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", desc = "LSP Format" },
+	    { "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "LSP Declaration" },
+	    { "gK", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "LSP Hover" },
+	    { "gR", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "LSP Rename" },
+	    { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "LSP Definition" },
+	    { "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", desc = "LSP Implentation" },
+	    { "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "LSP Type Definition" },
+	    { "gr", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "LSP References" },
+	    { "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "LSP Signature Help" },
+	    { "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "LSP Previous Diagnostic" },
+	    { "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "LSP Next Diagnostic" },
 	  }
-	  keymap['['] = {
-	    d = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "LSP Previous Diagnostic" }
-	  }
-	  keymap[']'] = {
-	    d = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "LSP Next Diagnostic" }
-	  }
-	  require("utils").register_keys(keymap, {
-	    prefix = "",
-	    buffer = event.buf
-	  })
+	  require("which-key").add(keymap)
 	end
       })
 

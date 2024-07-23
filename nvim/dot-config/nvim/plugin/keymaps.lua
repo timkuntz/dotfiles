@@ -159,4 +159,16 @@ keymap("n", "[Q", "<cmd>cnewer<CR>", { desc = "Newer qfixlist" })
 -- Call system open with the contents of the default register
 keymap("n", '<leader>o', [[<CMD>lua vim.fn.system("open " .. vim.fn.getreg('"'))<CR>]], { noremap = true, silent = true, desc = "Open Register"})
 
+local groups = {
+  mode = { "n", "v" },
+  { "<leader>b", group = "+Buffer" },
+  { "<leader>c", group = "Code" },
+  { "<leader>e", group = "+Explore" },
+  { "<leader>g", group = "+Git" },
+  { "<leader>h", group = "+Help" },
+  { "<leader>s", group = "+Search" },
+  { "<leader>u", group = "+UI" },
+}
+require("which-key").add(groups)
+
 

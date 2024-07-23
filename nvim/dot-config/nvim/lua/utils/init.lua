@@ -60,19 +60,5 @@ function M.merge_tables(defaults, custom)
     return newTable
 end
 
-function M.register_keys(keymap, opts)
-  opts = opts or {}
-  opts = M.merge_tables({
-    mode = "n",
-    prefix = "<leader>",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-  }, opts)
-
-  require('which-key').register(keymap, opts)
-end
-
 return M
 
