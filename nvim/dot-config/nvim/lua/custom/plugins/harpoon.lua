@@ -5,7 +5,7 @@ return {
     'nvim-lua/plenary.nvim',
     'https://github.com/lubyk/yaml'
   },
-  dev = true,
+  dev = false,
   enabled = true,
   opts = {
     menu = {
@@ -22,7 +22,7 @@ return {
       default = {
         select = function(list_item, list, options)
           if string.sub(list_item.value, 1, 2) == "* " then
-            P(yaml.load('harpoon.yaml'))
+            -- P(yaml.load('harpoon.yaml'))
             local list_name = string.sub(list_item.value, 3, -1)
             require'harpoon'.ui:close_menu()
             require'harpoon'.ui:toggle_quick_menu(require'harpoon':list(list_name))
