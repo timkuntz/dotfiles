@@ -85,13 +85,5 @@ return {
 
       lsp.setup()
     end,
-  },
-  {
-    'sourcegraph/sg.nvim',
-    enabled = true,
-    config = function()
-      require('sg').setup()
-      require('sg.lsp').setup()
-    end,
   }
 }
