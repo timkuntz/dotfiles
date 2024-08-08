@@ -56,7 +56,7 @@ keymap("n", "<leader>qq", "<cmd>qa<cr>", defs({ desc = "quit" }))
 
 -- restore the session for the current directory
 keymap("n", "<leader>qr", [[<cmd>lua require("persistence").load()<cr>]], defs({ desc = "restore session" }))
-keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], defs({ desc = "disable session" }))
+keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr><cmd>qa<cr>]], defs({ desc = "quit w/o session" }))
 
 -- don't do this, it creates issues for typing
 -- vim.keymap.set('i', 'mw', '<ESC>:w<CR>', { desc = 'Write buffer' })

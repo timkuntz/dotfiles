@@ -113,3 +113,14 @@ vim.api.nvim_create_autocmd("FileType", {
 --     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 --   end,
 -- })
+
+
+-- Define an autocommand to load the session on VimEnter
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    -- Don't load the session if Neovim was started with arguments
+    if vim.fn.argc() == 0 then
+      require("persistence").load()
+    end
+  end,
+})
