@@ -13,7 +13,7 @@ brew install stow
 ```bash
 git clone https://github.com/tim-kuntz/dotfiles.git
 cd dotfiles
-stow
+stow <package>
 ```
 ### TODO
 * doc results
