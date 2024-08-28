@@ -27,7 +27,7 @@ return {
     }
   },
   keys = {
-    { "<leader>e", "<cmd>Neotree reveal %p<cr>",                                   desc = "explore" },
+    { "<leader>e", "<cmd>Neotree reveal action=focus position=float %p<cr>", desc = "explore" },
     { "<leader>be", "<cmd>Neotree position=left toggle=true source=buffers<cr>",    desc = "explore" },
     { "<leader>ge", "<cmd>Neotree position=left toggle=true source=git_status<cr>", desc = "explore" },
   },
