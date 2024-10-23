@@ -65,6 +65,7 @@ return {
           local bufnr = vim.api.nvim_get_current_buf()
           actions.toggle_selection(bufnr)
         end,
+
       })
 
       local mappings = {
@@ -77,6 +78,7 @@ return {
           ["<C-p>"] = actions.cycle_history_prev,
           ["?"] = actions_layout.toggle_preview,
           ["<C-s>"] = custom_actions.visidata,
+          ["<C-b>"] = actions.delete_buffer,
         },
         n = {
           ["<CR>"] = custom_actions.pick,
@@ -84,6 +86,7 @@ return {
           ["s"] = custom_actions.visidata,
           ["<A-f>"] = custom_actions.file_browser,
           ["<C-d>"] = actions.delete_buffer,
+          ["<C-b>"] = actions.delete_buffer,
         },
       }
 
