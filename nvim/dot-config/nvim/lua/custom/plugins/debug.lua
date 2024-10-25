@@ -8,7 +8,7 @@ return {
     -- because we define keymaps in config using which-key
     "folke/which-key.nvim",
   },
-  enabled = true,
+  enabled = false,
   config = function()
     require("nvim-dap-virtual-text").setup {
       commented = true,
