@@ -29,7 +29,6 @@ return {
       local action_state = require("telescope.actions.state")
       local actions_layout = require("telescope.actions.layout")
       local transform_mod = require("telescope.actions.mt").transform_mod
-      local lga_actions = require("telescope-live-grep-args.actions")
       local custom_actions = transform_mod({
         -- VisiData
         visidata = function(prompt_bufnr)
@@ -94,7 +93,20 @@ return {
         defaults = {
           mappings = mappings,
         },
-        extensions = {},
+        extensions = {
+          live_grep_args = {
+            auto_quoting = false, -- enable/disable auto-quoting
+            -- define mappings, e.g.
+            mappings = { -- extend mappings
+              i = {
+                -- ["<C-u>"] = lga_actions.quote_prompt(),
+                -- ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob !**test** " }),
+                -- freeze the current list and start a fuzzy search in the frozen list
+                ["<C-f>"] = actions.to_fuzzy_refine,
+              },
+            },
+          }
+        },
       })
 
       -- Enable telescope fzf native, if installed
@@ -107,16 +119,15 @@ return {
       end, { desc = "[v]im" })
 
       -- requires the executable 'rg'; brew install rg
-      vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "by [g]rep" })
-      vim.keymap.set("n", "<leader>sG", function()
-        require("telescope.builtin").live_grep({ glob_pattern = "!*test.rb", glob_pattern = "!**/test/**" })
-      end, { desc = "by [G]rep with filters" })
-      vim.keymap.set(
-        "n",
-        "<leader>sw",
-        require("telescope.builtin").grep_string,
-        { desc = "current [w]ord" }
-      )
+      vim.keymap.set("n", "<leader>sg", function()
+        require("telescope").extensions.live_grep_args.live_grep_args()
+      end, { desc = "[g]rep" })
+
+      local lga_shortcuts = require("telescope-live-grep-args.shortcuts")
+      vim.keymap.set("n", "<leader>sw", function()
+        lga_shortcuts.grep_word_under_cursor({quote = false, postfix = " -F --iglob !**test** "})
+      end, { desc = "current [w]ord w/args"})
+
       vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = "[r]esume" })
       vim.keymap.set("n", "<leader>so", "<cmd>Telescope aerial<cr>", { desc = "code [o]utline" })
       vim.keymap.set(
@@ -152,21 +163,11 @@ return {
         }))
       end, { desc = "[/] Fuzzily search in current buffer" })
 
-      local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
-      vim.keymap.set("n", "<leader>sW", live_grep_args_shortcuts.grep_word_under_cursor, { desc = "current [W]ord w/args"})
-
-      -- vim.keymap.set("n", "<leader>sn", "<cmd>Telescope notify<cr>", { desc = "[N]otifications" })
-
       local telescope = require("telescope")
       telescope.load_extension "fzf"
       telescope.load_extension "ui-select"
       telescope.load_extension "aerial"
       telescope.load_extension("live_grep_args")
-      -- telescope.load_extension "notify"
-      -- telescope.load_extension "frecency"
-      -- telescope.load_extension "luasnip"
-      -- telescope.load_extension "conventional_commits"
-      -- telescope.load_extension "lazy"
     end,
   },
   {
