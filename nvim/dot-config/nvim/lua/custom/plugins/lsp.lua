@@ -5,11 +5,6 @@ return {
       'folke/neoconf.nvim',
     },
     init = function()
-      -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-      require("neodev").setup({
-	-- add any options here, or leave empty to use the default settings
-      })
-
       -- then setup your lsp server as usual
       local lspconfig = require('lspconfig')
 
