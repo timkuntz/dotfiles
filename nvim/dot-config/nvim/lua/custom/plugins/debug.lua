@@ -8,7 +8,7 @@ return {
     -- because we define keymaps in config using which-key
     "folke/which-key.nvim",
   },
-  enabled = false,
+  enabled = true,
   config = function()
     require("nvim-dap-virtual-text").setup {
       commented = true,
@@ -21,7 +21,7 @@ return {
     --       removing the language specific bits
     --       this file will reference the generic plugin
     --       and add the language specific bits back
-    -- require("pde.debug.ruby").setup()
+    require("utils.ruby-debug").setup()
 
     -- lua debug setup (extract to separate file)
     dap.configurations.lua = {
