@@ -102,5 +102,7 @@ return {
       { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", desc = "Terminate", nowait = false, remap = false },
     }
     require("which-key").add(keymap)
+
+    vim.keymap.set("v", "<leader>de", "<cmd>lua require'dapui'.eval()<cr>", { desc = "Evaluate", noremap = true, silent = true })
   end,
 }
