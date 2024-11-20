@@ -4,7 +4,7 @@ return {
 		dependencies = {
 			"tpope/vim-dispatch",
 		},
-		enabled = false,
+		enabled = true,
 		keys = {
 			{ "<leader>ts", "<cmd>TestSuite<cr>", desc = "Test Suite" },
 			{ "<leader>tf", "<cmd>TestFile<cr>", desc = "Test File" },
@@ -29,6 +29,8 @@ return {
 			-- vim.g["test#ruby#rails#options"] = "--verbose"
 			-- vim.g["test#neovim#term_position"] = "belowright"
 			vim.g["test#neovim#preserve_screen"] = 0
+
+			vim.g["test#neovim#position"] = "horizontal"
 
 			-- https://flukus.github.io/vim-errorformat-demystified.html
 			-- https://neovim.io/doc/user/quickfix.html#errorformat
