@@ -89,9 +89,68 @@ return {
         },
       }
 
+      local limit_to_search_paths = true
+
+      -- See `:help telescope.builtin`
+      local find_files = function()
+        local function file_exists(path)
+          local stat = vim.loop.fs_stat(path)
+          return stat and stat.type == 'file' -- Returns true if the file exists
+        end
+
+        -- Function to read file paths from a specified file into a table
+        local function read_file_paths(filename)
+          local paths = {}  -- Table to hold the file paths
+
+          -- Open the file for reading
+          local file = io.open(filename, "r")
+          if not file then
+            print("Could not open file: " .. filename)
+            return nil  -- Return nil if the file cannot be opened
+          end
+
+          -- Read each line and insert it into the table
+          for line in file:lines() do
+            if line and line ~= "" then  -- Check if the line is not empty
+              table.insert(paths, line)
+            end
+          end
+
+          file:close()  -- Close the file after reading
+          return paths  -- Return the table containing file paths
+        end
+
+        local search_paths = ".fd-priority"
+
+        -- Conditional statement
+        if limit_to_search_paths and file_exists(search_paths) then
+          local file_paths = read_file_paths(search_paths)
+          require("telescope.builtin").find_files({
+            hidden = true,
+            search_dirs = file_paths,
+          })
+        else
+          require("telescope.builtin").find_files({
+            hidden = true,
+          })
+        end
+      end
+
       require("telescope").setup({
         defaults = {
           mappings = mappings,
+        },
+        pickers = {
+          find_files = {
+            mappings = {
+              i = {
+                ["<C-g>"] = function()
+                  limit_to_search_paths = not limit_to_search_paths
+                  find_files()
+                end
+              }
+            }
+          }
         },
         extensions = {
           live_grep_args = {
@@ -109,13 +168,23 @@ return {
         },
       })
 
-      -- Enable telescope fzf native, if installed
-      -- pcall(require("telescope").load_extension, "fzf")
+      vim.keymap.set("n", "<leader>sf", function()
+        limit_to_search_paths = true
+        find_files()
+      end, { desc = "[f]iles" })
 
-      -- See `:help telescope.builtin`
-      vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[f]iles" })
+      vim.keymap.set("n", "<leader>sF", function()
+        require("telescope.builtin").find_files({
+          hidden = true,
+        })
+      end, { desc = "All [f]iles" })
+
       vim.keymap.set("n", "<leader>sv", function()
         require("telescope.builtin").find_files({cwd = vim.fn.stdpath('config')})
+      end, { desc = "[v]im" })
+
+      vim.keymap.set("n", "<leader>sn", function()
+        require("telescope.builtin").find_files({cwd = '~/Library/CloudStorage/Dropbox/notes'})
       end, { desc = "[v]im" })
 
       -- requires the executable 'rg'; brew install rg
