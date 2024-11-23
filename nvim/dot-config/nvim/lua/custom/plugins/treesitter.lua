@@ -61,6 +61,7 @@ return {
 			ensure_installed = {
 				"bash",
 				"dockerfile",
+				"elixir",
 				"graphql",
 				"go",
 				"html",
