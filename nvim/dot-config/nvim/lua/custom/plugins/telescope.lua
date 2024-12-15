@@ -185,12 +185,18 @@ return {
 
       vim.keymap.set("n", "<leader>sn", function()
         require("telescope.builtin").find_files({cwd = '~/Library/CloudStorage/Dropbox/notes'})
-      end, { desc = "[v]im" })
+      end, { desc = "[n]otes" })
 
       -- requires the executable 'rg'; brew install rg
       vim.keymap.set("n", "<leader>sg", function()
         require("telescope").extensions.live_grep_args.live_grep_args()
       end, { desc = "[g]rep" })
+
+      vim.keymap.set("n", "<leader>sG", function()
+        require("custom.telescope.multigrep").live_multigrep({
+          hidden = true,
+        })
+      end, { desc = "Multi [G]rep" })
 
       local lga_shortcuts = require("telescope-live-grep-args.shortcuts")
       vim.keymap.set("n", "<leader>sw", function()
