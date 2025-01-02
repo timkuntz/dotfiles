@@ -5,13 +5,12 @@ return {
     config = function()
       require("styler").setup {
         themes = {
-          markdown = { colorscheme = "catppuccin" },
+          markdown = { colorscheme = "tokyonight" },
           help = { colorscheme = "tokyonight" },
         },
       }
     end,
   },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "folke/tokyonight.nvim",
     lazy = false,
