@@ -32,15 +32,6 @@ keymap("n", "<c-j>", ":wincmd j<CR>", { noremap = false, silent = true })
 keymap("n", "<c-h>", ":wincmd h<CR>", { noremap = false, silent = true })
 keymap("n", "<c-l>", ":wincmd l<CR>", { noremap = false, silent = true })
 
--- UI
--- search highlight
-keymap("n", "<leader>uh", ":noh<CR>", defs({ desc = "Clear search highlight" }))
--- keymap("n", "<leader>uh", ":set hlsearch! hlsearch?<CR>", defs({ desc = "Toggle search highlight" }))
-
--- TODO are there other mappings for toggle relative line numbers?
--- toggle line numbers
-keymap("n", "<leader>un", "<cmd>set number! number?<cr>", defs({ desc = "line numbers" }))
-
 -- Copy/Paste
 keymap("n", "yp", ':let @*=expand("%")<CR>', defaults)
 keymap("n", "yP", ':let @*=expand("%:p")<CR>', defaults)
@@ -89,9 +80,14 @@ keymap("n", "<S-TAB>", buffers.goto_previous_buffer, defaults)
 -- vim.keymap.set('n', '<S-TAB>', ':bp<CR>', defaults)
 
 -- close the current buffer
-keymap("n", "<leader>bd", "<Cmd>bd<CR>", {desc = "Delete current" })
+--- @diagnostic disable-next-line: undefined-global
+keymap("n", "<leader>bd", function() Snacks.bufdelete() end, {desc = "Delete current" })
 -- close all other buffers
-keymap("n", "<leader>bo", buffers.only_buffer, { desc = "Delete others" })
+--- @diagnostic disable-next-line: undefined-global
+keymap("n", "<leader>bo", Snacks.bufdelete.other, {desc = "Delete others" })
+-- close all buffers
+--- @diagnostic disable-next-line: undefined-global
+keymap("n", "<leader>bo", Snacks.bufdelete.all, {desc = "Delete all" })
 -- close all but harpoon listed items
 keymap("n", "<leader>bh", buffers.harpoon_only, { desc = "Keep harpoon only" })
 

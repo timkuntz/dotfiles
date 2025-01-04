@@ -113,7 +113,8 @@ M.harpoon_only = function()
       end
     end
     if not found then
-      vim.cmd('bd' .. ' ' .. buffer.bufnr)
+      --- @diagnostic disable-next-line: undefined-global
+      Snacks.bufdelete.delete(buffer.bufnr)
     end
   end
 end
