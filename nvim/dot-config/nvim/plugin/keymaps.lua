@@ -87,7 +87,7 @@ keymap("n", "<leader>bd", function() Snacks.bufdelete() end, {desc = "Delete cur
 keymap("n", "<leader>bo", Snacks.bufdelete.other, {desc = "Delete others" })
 -- close all buffers
 --- @diagnostic disable-next-line: undefined-global
-keymap("n", "<leader>bo", Snacks.bufdelete.all, {desc = "Delete all" })
+keymap("n", "<leader>ba", Snacks.bufdelete.all, {desc = "Delete all" })
 -- close all but harpoon listed items
 keymap("n", "<leader>bh", buffers.harpoon_only, { desc = "Keep harpoon only" })
 
