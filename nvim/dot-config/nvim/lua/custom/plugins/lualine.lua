@@ -4,7 +4,6 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
-      'echasnovski/mini.bufremove',
     },
     enabled = true,
     -- See `:help lualine.txt`

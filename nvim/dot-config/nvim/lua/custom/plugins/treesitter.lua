@@ -49,10 +49,6 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			"JoosepAlviste/nvim-ts-context-commentstring",
-			"RRethy/nvim-treesitter-endwise",
-			"windwp/nvim-ts-autotag",
-			"nvim-treesitter/playground",
 		},
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
@@ -150,6 +146,7 @@ return {
 	},
 	{
 		"windwp/nvim-autopairs",
+    enabled = false,
 		event = "InsertEnter",
 		config = function()
 			local npairs = require("nvim-autopairs")

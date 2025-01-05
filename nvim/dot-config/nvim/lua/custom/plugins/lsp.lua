@@ -51,8 +51,9 @@ return {
             { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "LSP Definition" },
             { "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", desc = "LSP Implentation" },
             { "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "LSP Type Definition" },
-            { "gr", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "LSP References" },
-            { "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "LSP Signature Help" },
+            { "gs", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", desc = "LSP Symbols" },
+            { "gr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "LSP References" },
+            { "gS", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "LSP Signature Help" },
             { "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "LSP Previous Diagnostic" },
             { "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "LSP Next Diagnostic" },
           }

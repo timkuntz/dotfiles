@@ -158,7 +158,8 @@ keymap("n", '<leader>o', [[<CMD>lua vim.fn.system("open " .. vim.fn.getreg('"'))
 local groups = {
   mode = { "n", "v" },
   { "<leader>b", group = "+Buffer" },
-  { "<leader>c", group = "Code" },
+  { "<leader>c", group = "+Code" },
+  { "<leader>d", group = "+Debug" },
   { "<leader>e", group = "+Explore" },
   { "<leader>g", group = "+Git" },
   { "<leader>h", group = "+Help" },
@@ -166,5 +167,4 @@ local groups = {
   { "<leader>u", group = "+UI" },
 }
 require("which-key").add(groups)
-
 
