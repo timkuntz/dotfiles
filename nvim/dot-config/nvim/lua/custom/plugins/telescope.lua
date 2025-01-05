@@ -245,10 +245,10 @@ return {
       telescope.load_extension("live_grep_args")
     end,
   },
-  {
-    "stevearc/aerial.nvim",
-    enabled = false,
-    config = true,
-  },
+  -- {
+  --   "stevearc/aerial.nvim",
+  --   enabled = false,
+  --   config = true,
+  -- },
 }
 

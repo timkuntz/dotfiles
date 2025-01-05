@@ -6,11 +6,6 @@ return {
   -- 	dependencies = { "junegunn/fzf" },
   -- },
 
-  -- Autocompletion
-  {
-    'saghen/blink.cmp',
-  },
-
   -- "gc" to comment visual regions/lines
   {
     'echasnovski/mini.comment',
