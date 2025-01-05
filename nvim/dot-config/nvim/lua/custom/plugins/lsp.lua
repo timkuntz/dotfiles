@@ -1,3 +1,9 @@
+-- resources for manually setting up LSP if desired
+-- https://mason-registry.dev/registry/list#elixir-ls - registry of language servers
+-- https://github.com/elixir-lsp/elixir-ls/releases/tag/v0.26.2 - elixir-ls release
+-- ~/.local/share/nvim/mason/packages/elixir-ls/language_server.sh - location of elixir-ls
+-- https://lsp-zero.netlify.app/blog/lsp-config-without-plugins - lsp-zero blog post on setting up LSP in nvim 11.*
+
 return {
   {
     'neovim/nvim-lspconfig',

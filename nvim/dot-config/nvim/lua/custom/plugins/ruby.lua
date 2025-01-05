@@ -1,5 +1,6 @@
 return {
 	'tpope/vim-rails',
+  enabled = false,
 	dependencies = {
 		'tpope/vim-bundler',
 		'vim-ruby/vim-ruby',

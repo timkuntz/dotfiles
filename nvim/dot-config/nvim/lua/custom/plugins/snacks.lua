@@ -10,7 +10,8 @@ return {
     bufdelete = { enabled = true }, -- see keymaps.lua and buffers.lua for usage
     dashboard = {
       enabled = false,
-      example = "files", -- https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md#-examples
+      -- requires https://github.com/meiji163/gh-notify
+      example = "github", -- https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md#-examples
     },
     debug = { enabled = true },
     dim = { enabled = false },
