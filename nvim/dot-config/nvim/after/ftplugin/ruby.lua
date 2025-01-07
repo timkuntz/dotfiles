@@ -33,7 +33,7 @@ end
 local function test_path(relative_path)
     -- Replace "app" with "test"
     local modified_path = relative_path:gsub("/app/", "/test/")
-    modified_path = relative_path:gsub("/lib/", "/test/")
+    modified_path = modified_path:gsub("/lib/", "/test/")
 
     -- Append "_test" before the ".rb" extension
     modified_path = modified_path:gsub("(%.rb)$", "_test%1")
