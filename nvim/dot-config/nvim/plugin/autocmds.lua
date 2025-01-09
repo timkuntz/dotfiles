@@ -5,14 +5,6 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("quigkin_" .. name, { clear = true })
 end
 
--- this loads the session but syntax highlighting is not working
--- vim.api.nvim_create_autocmd({ "VimEnter" }, {
---   group = vim.api.nvim_create_augroup("restore-session-on-vim-enter", {}),
---   callback = function()
---     require("persistence").load()
---   end,
--- })
-
 --
 -- Let's stop manually saving
 --
@@ -48,25 +40,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
     vim.cmd("tabnext " .. current_tab)
   end,
 })
---
--- -- go to last loc when opening a buffer
--- vim.api.nvim_create_autocmd("BufReadPost", {
---   group = augroup("last_loc"),
---   callback = function(event)
---     local exclude = { "gitcommit" }
---     local buf = event.buf
---     if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].lazyvim_last_loc then
---       return
---     end
---     vim.b[buf].lazyvim_last_loc = true
---     local mark = vim.api.nvim_buf_get_mark(buf, '"')
---     local lcount = vim.api.nvim_buf_line_count(buf)
---     if mark[1] > 0 and mark[1] <= lcount then
---       pcall(vim.api.nvim_win_set_cursor, 0, mark)
---     end
---   end,
--- })
---
+
 -- -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
@@ -91,17 +65,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
---
--- -- wrap and check for spell in text filetypes
--- vim.api.nvim_create_autocmd("FileType", {
---   group = augroup("wrap_spell"),
---   pattern = { "gitcommit", "markdown" },
---   callback = function()
---     vim.opt_local.wrap = true
---     vim.opt_local.spell = true
---   end,
--- })
---
+
 -- -- Auto create dir when saving a file, in case some intermediate directory does not exist
 -- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 --   group = augroup("auto_create_dir"),
@@ -114,13 +78,15 @@ vim.api.nvim_create_autocmd("FileType", {
 --   end,
 -- })
 
-
+-- this loads the session but syntax highlighting is not working
 -- Define an autocommand to load the session on VimEnter
 vim.api.nvim_create_autocmd("VimEnter", {
+  group = vim.api.nvim_create_augroup("restore_session", { clear = true }),
   callback = function()
     -- Don't load the session if Neovim was started with arguments
     if vim.fn.argc() == 0 then
       require("persistence").load()
     end
   end,
+  nested = true,
 })
