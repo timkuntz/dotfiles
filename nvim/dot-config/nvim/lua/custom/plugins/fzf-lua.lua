@@ -6,6 +6,7 @@ return {
 
       -- calling `setup` is optional for customization
       require("fzf-lua").setup({
+        'hide',
         winopts = {
           on_create = function(_)
             vim.keymap.set("t", "<C-j>", "<Down>", { silent = true, buffer = true })
