@@ -14,7 +14,8 @@ return {
       example = "github", -- https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md#-examples
     },
     debug = { enabled = true },
-    dim = { enabled = false },
+    dim = { enabled = true },
+    explorer = { enabled = true },
     git = { enabled = false },
     gitbrowse = { enabled = false },
     indent = { enabled = false },
