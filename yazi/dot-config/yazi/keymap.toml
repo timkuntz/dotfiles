@@ -1,0 +1,11 @@
+[[manager.append_keymap]]
+on   = [ "g", "s" ]
+run  = 'cd ~/src'
+desc = "Go to src"
+
+[[manager.prepend_keymap]]
+on   = "<C-Enter>"
+run = "shell 'qlmanage -p \"$0\"' --interactive"
+desc = "quick look"
+
+# https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi-default.toml
