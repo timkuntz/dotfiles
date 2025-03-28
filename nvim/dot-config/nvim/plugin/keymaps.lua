@@ -33,8 +33,8 @@ keymap("n", "<c-h>", ":wincmd h<CR>", { noremap = false, silent = true })
 keymap("n", "<c-l>", ":wincmd l<CR>", { noremap = false, silent = true })
 
 -- Copy/Paste
-keymap("n", "yp", ':let @*=expand("%")<CR>', defaults)
-keymap("n", "yP", ':let @*=expand("%:p")<CR>', defaults)
+keymap("n", "<leader>yp", ':let @*=expand("%")<CR>', defs({ desc = "yank relative path" }))
+keymap("n", "<leader>yP", ':let @*=expand("%:p")<CR>', defs({ desc = "yank absolute path" }))
 
 -- Yank entire file content
 keymap("n", "yY", ":%y+<CR>", defaults)
@@ -69,7 +69,7 @@ keymap("n", "mA", ":A<CR>", defaults)
 -- keymap("n", "<leader>Tp", "<Plug>PlenaryTestFile<CR>", { desc = "Test Plugin" })
 
 -- ruby: insert pry debug below cursor
--- keymap("n", "<leader>rP", 'orequire "pry";binding.pry<ESC>', { desc = "Insert Pry" })
+keymap("n", "<leader>rP", 'orequire "pry";binding.pry\n<ESC>:w<CR>', { desc = "Insert Pry" })
 
 -- use tab to cycle through buffers
 keymap("n", "<TAB>", buffers.goto_next_buffer, defaults)
