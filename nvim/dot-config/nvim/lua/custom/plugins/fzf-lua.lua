@@ -1,7 +1,7 @@
 return {
   {
     "ibhagwan/fzf-lua",
-    enabled = true,
+    enabled = false,
     config = function()
 
       -- calling `setup` is optional for customization
@@ -50,8 +50,8 @@ return {
       -- git
       vim.keymap.set("n", "<leader>sg", require("fzf-lua").git_status, { desc = "[g]it status" })
       vim.keymap.set("n", "<leader>sG", require("fzf-lua").git_commits, { desc = "[G]it commits" })
-      vim.keymap.set("n", "<leader>ss", require("fzf-lua").git_stash, { desc = "git [s]tash" })
-      vim.keymap.set("n", "<leader>sb", require("fzf-lua").git_branches, { desc = "git [b]ranches" })
+      vim.keymap.set("n", "<leader>gS", require("fzf-lua").git_stash, { desc = "git [s]tash" })
+      vim.keymap.set("n", "<leader>gB", require("fzf-lua").git_branches, { desc = "git [b]ranches" })
 
       -- misc
       vim.keymap.set("n", "<leader>s:", require("fzf-lua").command_history, { desc = "command [h]istory" })
@@ -61,6 +61,10 @@ return {
       vim.keymap.set("n", "<leader>sk", require("fzf-lua").keymaps, { desc = "[k]eymaps" })
       vim.keymap.set("n", "<leader>sj", require("fzf-lua").jumps, { desc = "[j]umps" })
       vim.keymap.set("n", "<leader>sd", require("fzf-lua").diagnostics_document, { desc = "[d]iagnostics" })
+
+      -- lsp
+      vim.keymap.set("n", "<leader>ss", Snacks.picker.lsp_symbols, { desc = "LSP [s]ymbols" })
+      --
 
     end
   },
