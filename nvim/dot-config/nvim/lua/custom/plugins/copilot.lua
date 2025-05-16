@@ -1,21 +1,24 @@
--- https://docs.github.com/en/copilot/getting-started-with-github-copilot?tool=vimneovim
--- https://github.com/github/copilot.vim/tree/release
-
--- first call to this function doesn't seem to work
-local copilot_accept = function()
-	vim.g.copilot_no_tab_map = true
-	vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept()', { script = true, nowait = true, silent = true, expr = true })
-end
-
 return {
-	'github/copilot.vim',
-	lazy = false,
-	enabled = true,
-  keys = {
-    { "<leader>cC", "", desc = "Copilot" },
-    { "<leader>cCs", "<CMD>Copilot status<CR>", desc = "status" },
-    { "<leader>cCe", "<CMD>Copilot enable<CR>", desc = "enable" },
-    { "<leader>cCd", "<CMD>Copilot disable<CR>", desc = "disable" },
-    { "<C-j>", copilot_accept, mode = "i", desc = "Copilot accept" },
-  },
+  "zbirenbaum/copilot.lua",
+  cmd = "Copilot",
+  event = "InsertEnter",
+  config = function()
+    vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#83a5bf" })
+    require("copilot").setup({
+      copilot_node_command = vim.fn.expand("$HOME") .. "/.asdf/installs/nodejs/22.14.0/bin/node",
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-j>",
+          accept_word = false,
+          accept_line = false,
+          next = "<C-l>",
+          prev = "<C-h>",
+          dismiss = "<C-]>",
+        },
+      }
+    })
+  end,
 }
+
