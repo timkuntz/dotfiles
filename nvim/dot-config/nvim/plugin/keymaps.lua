@@ -33,7 +33,7 @@ keymap("n", "<c-h>", ":wincmd h<CR>", { noremap = false, silent = true })
 keymap("n", "<c-l>", ":wincmd l<CR>", { noremap = false, silent = true })
 
 -- Copy/Paste
-keymap("n", "<leader>yp", ':let @*=expand("%")<CR>', defs({ desc = "yank relative path" }))
+keymap("n", "<leader>yp", ':let @*=expand("%:~:.")<CR>', defs({ desc = "yank relative path" }))
 keymap("n", "<leader>yP", ':let @*=expand("%:p")<CR>', defs({ desc = "yank absolute path" }))
 
 -- Yank entire file content
@@ -105,11 +105,6 @@ keymap("n", "<M-2>", ":tabnext 2<CR>", defaults)
 keymap("n", "<M-3>", ":tabnext 3<CR>", defaults)
 keymap("n", "<M-4>", ":tabnext 4<CR>", defaults)
 keymap("n", "<M-5>", ":tabnext 5<CR>", defaults)
-
--- format sql
--- requires `brew install pgformatter`
-keymap("n", "<Leader>fs", ":%!pg_format<CR>", defaults)
-keymap("v", "<Leader>fs", ":'<,'>!pg_format<CR>", defaults)
 
 -- Move Lines
 keymap("n", "<A-j>", ":m .+1<CR>==")
