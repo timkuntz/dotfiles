@@ -3,6 +3,10 @@ local function file_exists(file_path)
     return stat ~= nil
 end
 
+local function is_library_available(lib_name)
+    return package.loaded[lib_name] ~= nil or package.searchpath(lib_name, package.path) ~= nil
+end
+
 local function edit_file(link)
   if not file_exists(link) then
     Snacks.notify.info('File does not exist: ' .. link)
@@ -20,7 +24,7 @@ local function extract_links(line)
     return matches
 end
 
-local function select_link(matches)
+local function select_link_with_fzf_lua(matches)
   require'fzf-lua'.fzf_exec(
     function(fzf_cb)
       for i, v in ipairs(matches) do
@@ -36,6 +40,36 @@ local function select_link(matches)
         end,
       }
     })
+end
+
+local function select_link_with_snacks(matches)
+  local items = {}
+  for i, v in ipairs(matches) do
+    table.insert(items, {
+      idx = i,
+      score = i,
+      text = i .. ' ' .. v.text,
+      name = v.text,
+      file = v.link,
+    })
+  end
+  return Snacks.picker({
+    items = items,
+    confirm = function(picker, item)
+      picker:close()
+      vim.cmd('edit ' .. item.file)
+    end,
+  })
+end
+
+local function select_link(matches)
+  local fzf_lua = 'fzf-lua'
+  if is_library_available(fzf_lua) then
+    select_link_with_fzf_lua(matches)
+  else
+    -- Snacks.notify.info('fzf-lua is not available. Falling back to fzf.vim.')
+    select_link_with_snacks(matches)
+  end
 end
 
 vim.keymap.set('n', '<CR>', function()
