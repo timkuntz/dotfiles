@@ -55,3 +55,9 @@ vim.keymap.set("n", "gt", function()
     Snacks.notify.info("Test file not found: " .. test_file)
   end
 end, { desc = "Goto Test", silent = true, buffer = 0 })
+
+-- keymap to copy fully qualified namespace to clipboard
+vim.keymap.set("n", "<leader>yn", function()
+  vim.fn.setreg('+', require('utils.treesitter').get_qualified_name())
+end, { desc = "copy qualified name" })
+
