@@ -1,7 +1,6 @@
---target=..
+--target=~
 --dotfiles
 --ignore=.stowrc
 --ignore=DS_Store
 --ignore=README.md
 --ignore=codespace-setup.sh
---ignore=zshrc

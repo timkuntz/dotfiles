@@ -9,13 +9,28 @@ On Mac
 brew install stow
 ```
 
-## Installation
+On Arch Linux
+```bash
+yay -S stow
+```
+
+## Usage
+
+Can be cloned to any directory.
 ```bash
 git clone https://github.com/tim-kuntz/dotfiles.git
 cd dotfiles
-stow <package>
+# stow <package>
+stow tmux
 ```
+
+## Notes
+
+* The `.stowrc` is configured to target the home `~` directory
+* Any file or directory prefixed with `dot-` will be converted to `.`; for example,
+  * `stow nvim` will symlink the directory `nvim/dot-config/nvim` to `~/.config/nvim` 
+  * `stow zsh` will symlink the file `zsh/dot-zshrc` to `~/.zshrc`
+
 ### TODO
-* doc results
 * include commands for removing all / specific
-* comment / provide example of the "do no harm" aspec
+* comment / provide example of the "do no harm" aspect
